@@ -7,9 +7,11 @@ document.addEventListener('DOMContentLoaded', function(){
     const likesList = document.querySelector('#likes')
     const inputBar = document.querySelector('input')
     const submitButton = document.querySelector('#submit')
+    const commentList = document.querySelector('#comments')
+    const likeCount = {}
 
-    setInterval(function(){
-        timer.textContent = parseInt(timer.textContent) + 1
+    setInterval( function(){
+        countUp()
     }, 1000);
 
     document.addEventListener('click', function(e){
@@ -17,16 +19,35 @@ document.addEventListener('DOMContentLoaded', function(){
             timer.textContent = parseInt(timer.textContent) - 1
         } else if (e.target === plusButton){
             timer.textContent = parseInt(timer.textContent) + 1
-        } else if (e.target === likeButton){
-            console.log(e.target)
         } else if (e.target === pauseButton){
-            console.log(e.target)
-        } else if (e.target === likesList){
-            console.log(e.target)
+            if (pauseButton.textContent === 'Resume'){
+                pauseButton.textContent = 'Pause'
+                countUp = () => timer.textContent = parseInt(timer.textContent) + 1
+            } else {
+                pauseButton.textContent = 'Resume'
+                countUp = () => null
+            }
+        } else if (e.target === likeButton){
+            let newNum = timer.textContent
+            if (likeCount.newNum){
+                likeCount[newNum] += 1
+                let times = likeCount[newNum]
+                likesList.innerHTML += `<ul>${newNum} Liked ${times} Times</ul>`
+            } else {
+                likeCount[newNum] = 1
+                likesList.innerHTML += `<ul>${newNum} Liked 1 Time</ul>`
+            }
         } else if (e.target === submitButton){
-            console.log(inputBar.textContent)
-        }
+            e.preventDefault()
+            const newText = inputBar.value
+            commentList.innerHTML += `<ul>${newText}</ul>`
+            inputBar.value = ''
+        } 
     })
+
+    function countUp(){
+        timer.textContent = parseInt(timer.textContent) + 1
+    }
 
     
 })
