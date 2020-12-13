@@ -29,13 +29,15 @@ document.addEventListener('DOMContentLoaded', function(){
             }
         } else if (e.target === likeButton){
             let newNum = timer.textContent
-            if (likeCount.newNum){
-                likeCount[newNum] += 1
-                let times = likeCount[newNum]
-                likesList.innerHTML += `<ul>${newNum} Liked ${times} Times</ul>`
-            } else {
-                likeCount[newNum] = 1
+            if (!likeCount[newNum]){
+                likeCount[newNum] = 1 
+                console.log(likeCount)
                 likesList.innerHTML += `<ul>${newNum} Liked 1 Time</ul>`
+            } else {
+                let times = likeCount[newNum]
+                likeCount[newNum] = parseInt(times) + 1 
+                likesList.innerHTML += `<ul>${newNum} Liked ${times} Times</ul>`
+                console.log(likeCount + 'secondTime')
             }
         } else if (e.target === submitButton){
             e.preventDefault()
