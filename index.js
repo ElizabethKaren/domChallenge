@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 console.log(li)
             } else {
                 likeCount[newNum]++
-                const updatingListITem = document.querySelector(`#${newNum}`)
+                let updatingListITem = document.getElementById(newNum)
                 console.log(updatingListITem)
                 updatingListITem.textContent = `${newNum} Liked ${likeCount[newNum]} Times 🤡`
             }
