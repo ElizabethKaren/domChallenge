@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function(){
         } else if (e.target === submitButton){
             e.preventDefault()
             const newText = inputBar.value
-            commentList.innerHTML += `<li>${newText}</li>`
+            commentList.innerHTML += `<p>${newText}</p>`
             inputBar.value = ''
         } 
     })
