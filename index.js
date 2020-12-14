@@ -31,13 +31,16 @@ document.addEventListener('DOMContentLoaded', function(){
             let newNum = timer.textContent
             if (!likeCount[newNum]){
                 likeCount[newNum] = 1 
-                console.log(likeCount)
-                likesList.innerHTML += `<ul>${newNum} Liked 1 Time</ul>`
+                const li = document.createElement('li')
+                li.id = newNum
+                li.textContent = `${newNum} Liked 1 Time 🤡`
+                likesList.appendChild(li)
+                console.log(li)
             } else {
-                let times = likeCount[newNum]
-                likeCount[newNum] = parseInt(times) + 1 
-                likesList.innerHTML += `<ul>${newNum} Liked ${times} Times</ul>`
-                console.log(likeCount + 'secondTime')
+                likeCount[newNum]++
+                const updatingListITem = document.querySelector(`#${newNum}`)
+                console.log(updatingListITem)
+                updatingListITem.textContent = `${newNum} Liked ${likeCount[newNum]} Times 🤡`
             }
         } else if (e.target === submitButton){
             e.preventDefault()
