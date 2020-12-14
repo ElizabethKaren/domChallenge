@@ -32,20 +32,18 @@ document.addEventListener('DOMContentLoaded', function(){
             if (!likeCount[newNum]){
                 likeCount[newNum] = 1 
                 const li = document.createElement('li')
-                li.id = newNum
+                li.dataset.id = newNum
                 li.textContent = `${newNum} Liked 1 Time 🤡`
                 likesList.appendChild(li)
-                console.log(li)
             } else {
                 likeCount[newNum]++
-                let updatingListITem = document.getElementById(newNum)
-                console.log(updatingListITem)
+                let updatingListITem = document.querySelector(`[data-id='${newNum}']`)
                 updatingListITem.textContent = `${newNum} Liked ${likeCount[newNum]} Times 🤡`
             }
         } else if (e.target === submitButton){
             e.preventDefault()
             const newText = inputBar.value
-            commentList.innerHTML += `<ul>${newText}</ul>`
+            commentList.innerHTML += `<li>${newText}</li>`
             inputBar.value = ''
         } 
     })
