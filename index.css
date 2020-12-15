@@ -1,6 +1,7 @@
 body{
     background-color: rgb(241, 157, 241);
     font-family: 'Lobster Two', cursive;
+    text-align: center;
 }
 button{
     background-color: azure;

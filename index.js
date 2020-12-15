@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function(){
             let newNum = timer.textContent
             if (!likeCount[newNum]){
                 likeCount[newNum] = 1 
-                const li = document.createElement('li')
+                const li = document.createElement('div')
                 li.dataset.id = newNum
                 li.textContent = `${newNum} Liked 1 Time 😻`
                 likesList.appendChild(li)
