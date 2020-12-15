@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function(){
             e.preventDefault()
             const newPic = picInput.value
             picStorage.innerHTML += `<img src='${newPic}' alt='newpic' />`
-            console.log(picInput.value)
+            document.querySelector('#pic-input').value = ''
         }
     })
 
