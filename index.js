@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function(){
     const submitButton = document.querySelector('#submit')
     const commentList = document.querySelector('#comments')
     const likeCount = {}
+    const picStorage = document.querySelector('#picStorage')
+    const picInput = document.querySelector('#pic-input')
+    const picAdd = document.querySelector('#picAdd')
 
     setInterval( function(){
         countUp()
@@ -45,7 +48,12 @@ document.addEventListener('DOMContentLoaded', function(){
             const newText = inputBar.value
             commentList.innerHTML += `<p>${newText}</p>`
             inputBar.value = ''
-        } 
+        } else if (e.target === picAdd){
+            e.preventDefault()
+            const newPic = picInput.value
+            picStorage.innerHTML += `<img src='${newPic}' alt='newpic' />`
+            console.log(picInput.value)
+        }
     })
 
     function countUp(){
