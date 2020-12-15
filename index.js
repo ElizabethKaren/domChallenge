@@ -1,64 +1,67 @@
+const timer = document.querySelector('#number')
+const likesList = document.querySelector('#likes')
+const inputBar = document.querySelector('input')
+const commentList = document.querySelector('#comments')
+const likeCount = {}
+const picStorage = document.querySelector('#picStorage')
+const picInput = document.querySelector('#pic-input')
+
+let countUp = ()=> {
+    timer.textContent = parseInt(timer.textContent) + 1
+}
+
+const eventListener = e => {
+    if (e.target.id === 'minus') {
+        timer.textContent = parseInt(timer.textContent) - 1
+    } else if (e.target.id === 'plus'){
+        timer.textContent = parseInt(timer.textContent) + 1
+    } else if (e.target.id === 'pause'){
+        if (e.target.textContent === 'Resume'){
+            e.target.textContent = 'Pause'
+            countUp = () => timer.textContent = parseInt(timer.textContent) + 1
+        } else {
+            e.target.textContent = 'Resume'
+            countUp = () => timer.textContent = parseInt(timer.textContent) + 0
+        }
+    } else if (e.target.id === 'heart'){
+        let newNum = timer.textContent
+        if (!likeCount[newNum]){
+            likeCount[newNum] = 1 
+            const li = document.createElement('div')
+            li.dataset.id = newNum
+            li.textContent = `${newNum} Liked 1 Time 😻`
+            likesList.appendChild(li)
+        } else {
+            likeCount[newNum]++
+            let updatingListITem = document.querySelector(`[data-id='${newNum}']`)
+            updatingListITem.textContent = `${newNum} Liked ${likeCount[newNum]} Times 😻`
+        }
+    } else if (e.target.id === 'submit'){
+        e.preventDefault()
+        const newText = inputBar.value
+        const newCom = document.createElement('p')
+        newCom.textContent = `${newText}😻`
+        commentList.appendChild(newCom)
+        inputBar.value = ''
+    } else if (e.target.id === 'picAdd'){
+        e.preventDefault()
+        const newPic = picInput.value
+        picStorage.innerHTML += `<img src='${newPic}' alt='newpic' width="560" height="315"/>`
+        document.querySelector('#pic-input').value = ''
+    } else if (e.target.id === 'exOut'){
+        console.log(e.target.parentElement)
+        e.target.parentElement = ''
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function(){
-    const timer = document.querySelector('#number')
-    const minusButton = document.querySelector('#minus')
-    const plusButton = document.querySelector('#plus')
-    const likeButton = document.querySelector('#heart')
-    const pauseButton = document.querySelector('#pause')
-    const likesList = document.querySelector('#likes')
-    const inputBar = document.querySelector('input')
-    const submitButton = document.querySelector('#submit')
-    const commentList = document.querySelector('#comments')
-    const likeCount = {}
-    const picStorage = document.querySelector('#picStorage')
-    const picInput = document.querySelector('#pic-input')
-    const picAdd = document.querySelector('#picAdd')
+
+    document.addEventListener('click', function(event) {
+        eventListener(event)
+    })
 
     setInterval( function(){
         countUp()
     }, 1000);
 
-    document.addEventListener('click', function(e){
-        if (e.target === minusButton) {
-            timer.textContent = parseInt(timer.textContent) - 1
-        } else if (e.target === plusButton){
-            timer.textContent = parseInt(timer.textContent) + 1
-        } else if (e.target === pauseButton){
-            if (pauseButton.textContent === 'Resume'){
-                pauseButton.textContent = 'Pause'
-                countUp = () => timer.textContent = parseInt(timer.textContent) + 1
-            } else {
-                pauseButton.textContent = 'Resume'
-                countUp = () => timer.textContent = parseInt(timer.textContent) + 0
-            }
-        } else if (e.target === likeButton){
-            let newNum = timer.textContent
-            if (!likeCount[newNum]){
-                likeCount[newNum] = 1 
-                const li = document.createElement('div')
-                li.dataset.id = newNum
-                li.textContent = `${newNum} Liked 1 Time 😻`
-                likesList.appendChild(li)
-            } else {
-                likeCount[newNum]++
-                let updatingListITem = document.querySelector(`[data-id='${newNum}']`)
-                updatingListITem.textContent = `${newNum} Liked ${likeCount[newNum]} Times 😻`
-            }
-        } else if (e.target === submitButton){
-            e.preventDefault()
-            const newText = inputBar.value
-            commentList.innerHTML += `<p>${newText}😻</p>`
-            inputBar.value = ''
-        } else if (e.target === picAdd){
-            e.preventDefault()
-            const newPic = picInput.value
-            picStorage.innerHTML += `<img src='${newPic}' alt='newpic' width="560" height="315"/>`
-            document.querySelector('#pic-input').value = ''
-        }
-    })
-
-    function countUp(){
-        timer.textContent = parseInt(timer.textContent) + 1
-    }
-
-    
 })
