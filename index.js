@@ -36,22 +36,22 @@ document.addEventListener('DOMContentLoaded', function(){
                 likeCount[newNum] = 1 
                 const li = document.createElement('li')
                 li.dataset.id = newNum
-                li.textContent = `${newNum} Liked 1 Time 🤡`
+                li.textContent = `${newNum} Liked 1 Time 😻`
                 likesList.appendChild(li)
             } else {
                 likeCount[newNum]++
                 let updatingListITem = document.querySelector(`[data-id='${newNum}']`)
-                updatingListITem.textContent = `${newNum} Liked ${likeCount[newNum]} Times 🤡`
+                updatingListITem.textContent = `${newNum} Liked ${likeCount[newNum]} Times 😻`
             }
         } else if (e.target === submitButton){
             e.preventDefault()
             const newText = inputBar.value
-            commentList.innerHTML += `<p>${newText}</p>`
+            commentList.innerHTML += `<p>${newText}😻</p>`
             inputBar.value = ''
         } else if (e.target === picAdd){
             e.preventDefault()
             const newPic = picInput.value
-            picStorage.innerHTML += `<img src='${newPic}' alt='newpic' />`
+            picStorage.innerHTML += `<img src='${newPic}' alt='newpic' width="560" height="315"/>`
             document.querySelector('#pic-input').value = ''
         }
     })
