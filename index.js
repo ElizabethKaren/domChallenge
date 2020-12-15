@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 countUp = () => timer.textContent = parseInt(timer.textContent) + 1
             } else {
                 pauseButton.textContent = 'Resume'
-                countUp = () => null
+                countUp = () => timer.textContent = parseInt(timer.textContent) + 0
             }
         } else if (e.target === likeButton){
             let newNum = timer.textContent
