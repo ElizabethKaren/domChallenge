@@ -6,9 +6,7 @@ const likeCount = {}
 const picStorage = document.querySelector('#picStorage')
 const picInput = document.querySelector('#pic-input')
 
-let countUp = ()=> {
-    timer.textContent = parseInt(timer.textContent) + 1
-}
+let countUp = ()=> timer.textContent = parseInt(timer.textContent) + 1
 
 const eventListener = e => {
     if (e.target.id === 'minus') {
