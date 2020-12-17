@@ -47,12 +47,11 @@ const eventListener = e => {
         picStorage.innerHTML += `<img src='${newPic}' alt='newpic' width="560" height="315"/>`
         document.querySelector('#pic-input').value = ''
     } else if (e.target.id === 'exOut'){
-        console.log(e.target.parentElement)
         e.target.parentElement = ''
     }
 }
 
 document.addEventListener('DOMContentLoaded', function(){
     document.addEventListener('click', (event) => eventListener(event))
-    setInterval( () => countUp(), 1000);
+    setInterval(() => countUp(), 1000);
 })
