@@ -53,13 +53,6 @@ const eventListener = e => {
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-
-    document.addEventListener('click', function(event) {
-        eventListener(event)
-    })
-
-    setInterval( function(){
-        countUp()
-    }, 1000);
-
+    document.addEventListener('click', (event) => eventListener(event))
+    setInterval( () => countUp(), 1000);
 })
