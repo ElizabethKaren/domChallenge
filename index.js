@@ -51,7 +51,23 @@ const eventListener = e => {
     }
 }
 
+const changeFavicon = link => {
+    let $favicon = document.querySelector('link[rel="icon"]')
+    // If a <link rel="icon"> element already exists,
+    // change its href to the given link.
+    if ($favicon !== null) {
+      $favicon.href = link
+    // Otherwise, create a new element and append it to <head>.
+    } else {
+      $favicon = document.createElement("link")
+      $favicon.rel = "icon"
+      $favicon.href = link
+      document.head.appendChild($favicon)
+    }
+  }
+
 document.addEventListener('DOMContentLoaded', function(){
+    changeFavicon("https://www.dictionary.com/e/wp-content/uploads/2018/07/cat-emoji.png")
     document.addEventListener('click', (event) => eventListener(event))
     setInterval(() => countUp(), 1000);
 })

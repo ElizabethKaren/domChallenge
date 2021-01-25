@@ -1,21 +1,29 @@
 body{
-    background-color: rgb(241, 157, 241);
+    color: #531CB3;
+    background-color: #CC92C2;
     font-family: 'Lobster Two', cursive;
     text-align: center;
+    font-size: large;
 }
 button{
-    background-color: azure;
-    border-radius: 7px;
-    border: 2px solid azure;
+    background-color: transparent;
+    color: #531CB3;
+    border-radius: none;
+    border: none;
+    font-size: large;
+    font-family: 'Lobster Two', cursive;
 }
 button:hover{
-    background-color: rgb(4, 201, 201);
-    color: white;
+    background-color:#AA7BC3;
+    color: #531CB3;
 }
 input{
-    background-color: azure;
+    background-color: #AA7BC3;
     border-radius: 7px;
-    border: 2px solid azure;
+    border: 2px solid #AA7BC3;
+    font-size: large;
+    font-family: 'Lobster Two', cursive;
+    color: #531CB3;
 }
 #exOut{
     margin-right: 90px;
